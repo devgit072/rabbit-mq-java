@@ -8,12 +8,13 @@ Queue can be used for:
 
 
 <h4>Install RabbitMQ</h4>
-Docker is convenient way to install RabbitMQ amd best way to install RabbitMQ is using docker.      
-How to run rabbitmq as docker:      
-docker container run -d --hostname local-rabbit-mq -p 15672:15672 -p 5672:5672 --name rabbit rabbitmq:3.8.0-rc.1-management     
-I have picked management tag , because I dont have to install separate management plugin(Erlang). It will provide you GUI for viewing all thing in your rabbitMQ.
+Docker is convenient way to install RabbitMQ and best way to install RabbitMQ.		
 
-If everythings works fine, then you can visit RabbitMQ UI interface: localhost:15672 (guest/guest)      
+__How to run rabbitmq as docker:__      
+```docker container run -d --hostname local-rabbit-mq -p 15672:15672 -p 5672:5672 --name rabbit rabbitmq:3.8.0-rc.1-management``` .      
+I have picked management tag , because I dont have to install separate management plugin(Erlang). It will provide you GUI RabbitMQ server.
+
+If everythings works fine, then you can visit RabbitMQ UI interface: ```localhost:15672 (guest/guest)```      
 Please note that rabbitmq runs on 5672 and UI runs on 15672.   
 So your application need to point to 5672 port.
 
