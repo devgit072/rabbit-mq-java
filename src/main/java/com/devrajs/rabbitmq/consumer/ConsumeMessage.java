@@ -10,11 +10,12 @@ import java.util.concurrent.TimeoutException;
 public class ConsumeMessage {
     private String queueName;
     private Channel channel;
+    private Connection connection;
 
     public ConsumeMessage(String queueName) throws IOException, TimeoutException {
         this.queueName = queueName;
         RabbitMQConnection rabbitMQConnection = new RabbitMQConnection();
-        Connection connection = rabbitMQConnection.createNewConnection();
+        connection = rabbitMQConnection.createNewConnection();
         channel = connection.createChannel();
         channel.queueDeclare(this.queueName, false, false, false, null);
     }
@@ -29,5 +30,10 @@ public class ConsumeMessage {
             }
         };
         channel.basicConsume(queueName, true, consumer);
+    }
+
+    public void closeChannelAndConnection() throws IOException, TimeoutException {
+        channel.close();
+        connection.close();
     }
 }

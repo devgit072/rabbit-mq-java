@@ -12,6 +12,7 @@ public class PublishMessage {
     private Connection connection;
     private Channel channel;
 
+    // Create a connection and channel.
     public PublishMessage(String queueName) throws IOException, TimeoutException {
         this.queueName = queueName;
         RabbitMQConnection rabbitMQConnection = new RabbitMQConnection();
@@ -24,11 +25,13 @@ public class PublishMessage {
         channel.queueDeclare(this.queueName, false, false, false, null);
     }
 
+    // Publish message.
     public void publishMessage(String message) throws IOException {
         channel.basicPublish("", this.queueName, null, message.getBytes());
         System.out.println("Published: " + message);
     }
 
+    // Close both channel and connection.
     public void closeChannelAndConnection() throws IOException, TimeoutException {
         channel.close();
         connection.close();

@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.util.Properties;
 import java.util.concurrent.TimeoutException;
 
+// Create one singleton connection factory which can be used to create many conenctions.
 public class RabbitMQConnection {
 
     private ConnectionFactory connectionFactory;
